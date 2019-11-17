@@ -23,7 +23,7 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public  void onClick (View v){
                 //添加数据
-                Uri uri = Uri.parse("content://com.example.ex_2_wordbook.provider/wordsbook");
+                Uri uri = Uri.parse("content://com.example.wordsbook.provider/wordbook");
                 ContentValues values = new ContentValues();
                 values.put("word","solitary");
                 values.put("meanings" ,"孤独");
@@ -38,7 +38,7 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public  void onClick (View v){
                 //查询数据
-                Uri uri = Uri.parse("content://com.example.ex_2_wordbook.provider/wordsbook");
+                Uri uri = Uri.parse("content://com.example.wordsbook.provider/wordbook");
                 Cursor cursor = getContentResolver().query(uri,null,null,null,null);
                 if (cursor !=null)
                 {
@@ -46,7 +46,7 @@ public class MainActivity extends AppCompatActivity {
                         String word = cursor.getString(cursor.getColumnIndex("word"));
                         String meanings = cursor.getString(cursor.getColumnIndex("meanings"));
                         String exampleSentence = cursor.getString(cursor.getColumnIndex("exampleSentence"));
-                        Log.d("MainActivity","word name is"+word);
+                        Log.d("MainActivity","word name is "+word);
                         Log.d("MainActivity","meanings :"+meanings);
                         Log.d("MainActivity","exampleSentence:"+exampleSentence);
                     }
@@ -60,11 +60,11 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public  void onClick (View v){
                 //更新数据
-                Uri uri = Uri.parse("content://com.example.ex_2_wordbook.provider/wordsbook/"+newword);
+                Uri uri = Uri.parse("content://com.example.wordsbook.provider/wordbook/"+newword);
                 ContentValues values = new ContentValues();
-               ;
+                values.put("word","solitary");
                 values.put("meanings","独立生活能力");
-
+                values.put("exampleSentence","solitary");
                 getContentResolver().update(uri,values,null,null);
             }
         });
@@ -73,7 +73,7 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick (View v){
                 //删除数据
-                Uri uri = Uri.parse("content://com.example.ex_2_wordbook.provider/wordsbook/"+newword);
+                Uri uri = Uri.parse("content://com.example.wordsbook.provider/wordbook/"+newword);
                 getContentResolver().delete(uri,null,null);
             }
                                       }
